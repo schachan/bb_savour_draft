@@ -1,0 +1,142 @@
+.chat-section{
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding: 15px 10px;
+    background-color: #232322;
+    border-top: 2px solid #181818;
+    z-index:999999;
+}
+.typing-area{
+    height: 32px;
+    font-size:13px;
+}
+.typing-box{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: #fff;
+    padding: 0px 10px;
+    border: 1px solid #4C4B4C;
+    border-radius: 24px;
+    outline: none;    
+}
+.icon{
+    height: 24px;
+    padding-top: 3px;
+    color: #58A9DE;
+}
+.msg-section{
+    padding:20px 15px 0px 15px;
+    position: relative;
+}
+.msg-section::before{
+    content:"";
+    width: 0px;
+    height: 0px;
+    border:0.4em solid transparent;
+    position: absolute;
+}
+.incoming-msg{
+    max-width:100%;
+    background-color:#3A3837;
+    margin: 0px 8px;
+    padding:17px 15px;
+    border-radius:5px;
+    border-top-left-radius: 0px;
+    color: #F1F1F1;
+    font-size: 12px;
+    font-weight: bold;
+}
+.incoming-msg-section::before{
+    left: 11px;
+    border-width: 0px 13px 8px 0px;
+    border-color: transparent #3a3837;
+}
+.outgoing-msg{
+    max-width:100%;
+    background-color: #C2E6DF;
+    margin: 0px 8px;
+    padding:8px 15px;
+    border-radius:5px;
+    border-top-right-radius: 0px;
+    color: #686968;
+    font-size: 12px;
+}
+.outgoing-msg-section::before{
+    right: 11px;
+    border-width: 0 0 8px 13px;
+    border-color: transparent #c2e6df;
+}
+.attachment{
+    padding-bottom: 10px;
+}
+.attachment:last-child{
+    padding-bottom: 0px;
+}
+.attachment-title{
+    color: #F1F1F1;
+    font-weight: normal;
+    overflow: hidden;
+    word-break: break-all;
+    line-height: 18px;
+}
+.attachment-text{
+    color: #CCC;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+}
+.field-details{
+    color:#AB92BC;
+}
+.actions{
+    padding:5px 5px 5px 0px;
+}
+.action-btn{
+    background-color: transparent;
+    color: #3AABE1;
+    min-width: 100px;
+    border: 2px solid #3AABE1;
+    border-radius:2px;
+}
+.action-label{
+    padding: 4px 0px 0px 1px;
+    color: #A8A9A9;
+}
+.field-name{
+    font-size:12px;
+    color:#F1F1F1 !important;
+}
+.field-value{
+    font-size: 11px;
+    line-height: 15px;
+    margin-bottom: 12px;
+    font-weight: normal;
+    color: #A8A9A9 !important;
+}
+.key-value-container{
+    margin: 5px 0px 0px 3px;
+}
+.outgoing-msg::before{
+    content: "";
+    width:0px;
+    height:0px;
+    border: 0.8em solid transparent;
+    position: absolute;
+    left: -20px;
+    top:40%;
+    border-right: 10px solid #444;
+}
+.count-records{
+    color:#757575;
+    font-size:10px; 
+}
+.properties{
+    word-break: break-all;
+}
+.title-link{
+    color: #3AABE1;
+    text-decoration: underline;
+    font-weight: bold;
+}
