@@ -1,19 +1,19 @@
-<div class="jarvis-container clearfix">
+<div #chatScroll class="jarvis-container clearfix">
   <!-- Messages Section -->
   <div class="chat-holder">
-    <div #chatScroll class="chat-message-container">
+    <div class="chat-message-container">
       <div #container></div>
     </div>
-    <!-- Footer Section -->    
-      <div class="col-12 chat-section footer-container">
-        <div class="col-11 nopadding float-left clearfix typing-area">
-          <input type="text" #inputMessage [(ngModel)]="message" name="typing-box" (keyup.enter)="sendMessage()" class="typing-box" [autofocus]="message">
-        </div>
-        <div class="col-1 nopadding float-right send-box" (click)="sendMessage()">
-          <span class="float-right icon">
-            <i class="topbar-icon material-icons">send</i>
-          </span>
-        </div>
-      </div>
+  </div>
+  <!-- Footer Section -->    
+  <div class="col-12 footer_css footer-container">
+    <div class="col-11 nopadding float-left clearfix typing-area">
+      <input type="text" #inputMessage [(ngModel)]="message" name="typing-box" (keyup.enter)="sendMessage()" class="typing-box" [autofocus]="message">
+    </div>
+    <div class="col-1 nopadding float-right send-box" (click)="sendMessage()">
+      <span class="float-right icon">
+        <i class="topbar-icon material-icons">send</i>
+      </span>
+    </div>
   </div>
 </div>

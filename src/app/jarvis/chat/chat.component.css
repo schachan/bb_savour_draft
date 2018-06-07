@@ -1,12 +1,15 @@
-/* .jarvis-container{
-    margin-bottom:70px;
-} */
+.jarvis-container{
+    padding-bottom:70px;
+} 
 .chat-holder{
-    position:relative; 
-    height: 100vh;
+    position:relative;
 }
-.chat-section{
-    position: absolute;;
+
+::-webkit-scrollbar {
+    display: none!important;
+}
+.chat-section, .footer_css{
+    position: fixed;
     bottom:0;
     right:0;
     padding: 15px 10px;
@@ -16,7 +19,7 @@
 }
 .chat-message-container{
     height: 100%;
-    overflow:auto;
+    overflow:scroll;
 }
 .typing-area{
     height: 32px;

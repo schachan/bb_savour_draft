@@ -38,7 +38,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     scrollToBottom(): void{
         try {
-            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            // this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            this.myScrollContainer.nativeElement.scrollIntoView(false);
         } catch (err) { }
     }
 
@@ -74,7 +75,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 // });
             }
         }
-        this.message = '';   
+        this.message = '';
     }
 
     addToMessagesList(data: Object) {
