@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { ChatComponent } from './chat/chat.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,9 +13,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-	RouterModule.forChild(routes)
+    FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [MessageComponent, ChatComponent],
-  entryComponents: [MessageComponent]
+  entryComponents: [MessageComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class JarvisModule { }

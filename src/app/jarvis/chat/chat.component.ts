@@ -82,13 +82,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         const componentFactory = this.resolver.resolveComponentFactory(MessageComponent);
         const dynamicComponent = <MessageComponent>this.container.createComponent(componentFactory).instance;
         dynamicComponent.message = data;
-        dynamicComponent.getButtonCommand().subscribe(command => {
-            if (command !== '') {
-                this.message = command;
-                this.inputEl.nativeElement.focus();
-            } else {
-                return;
-            }
-        });
+        // dynamicComponent.getButtonCommand().subscribe(command => {
+        //     if (command !== '') {
+        //         this.message = command;
+        //         this.inputEl.nativeElement.focus();
+        //     } else {
+        //         return;
+        //     }
+        // });
     }
 }
