@@ -140,3 +140,24 @@
     text-decoration: underline;
     font-weight: bold;
 }
+.chatheading{
+    background-color:#fff5c4;
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    padding: 5px 12px 6px 12px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    margin: 10px;
+    color: #000;
+    max-width : 100%;
+    display: inline-block;
+    -webkit-flex: none;
+    flex: none;
+    font-size: 12.5px;
+    line-height: 21px;
+}
+.chatheadingContainer{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}

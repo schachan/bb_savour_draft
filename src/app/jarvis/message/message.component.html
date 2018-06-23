@@ -1,44 +1,16 @@
-<div class="col-12 msg-section"
-     [ngClass]="{
-        'float-right': message.isIncoming == false,
-        'incoming-msg-section': message.isIncoming == true,
-        'float-left': message.isIncoming == true,
-        'outgoing-msg-section': message.isIncoming == false
+<div class="col-12 msg-section" [ngStyle]="{'display': message.heading == true ? 'none' : 'block'}" [ngClass]="{
+        'float-left incoming-msg-section': message.left == true,
+        'float-right outgoing-msg-section': message.left == false
      }">
-
     <div [ngClass]="{
-            
-            'float-right': message.isIncoming == false,
-            'incoming-msg': message.isIncoming == true,
-            'outgoing-msg': message.isIncoming == false
-    }">
-        <p class="nomargin" [ngClass]="{'attachment-text': message.isIncoming === true}">{{message.text}}</p>
-        <div class="attachment clearfix" *ngFor="let attachment of message.attachments">
-            <markdown>
-                <p *ngIf="!attachment.title_link" target="_blank" class="attachment-title nomargin">{{attachment.title}}</p>
-                <a *ngIf="attachment.title_link" [attr.href]="attachment.title_link" target="_blank" class="attachment-title nomargin title-link">{{attachment.title}}</a>
-                <p class="attachment-text nomargin">{{attachment.text}}</p>
-                <div *ngIf="attachment.query_help === true">
-                    <div class="fields float-left clearfix" *ngFor="let field of attachment.fields">
-                        <p class="field-details nomargin">[ {{field.title}} = {{field.value}} ] </p>
-                    </div>
-                </div>
-                <div class="actions clearfix" [ngClass]="{'float-left': attachment.actions_inline === true}" *ngFor="let action of attachment.actions">
-                    <p class="float-left nomargin" [ngClass]="{'action-label col-6': attachment.actions_inline === false}">{{action.button_label}}</p>
-                    <button class="action-btn float-left" [ngClass]="{'col-6': attachment.actions_inline === false}" (click)="sendButtonCommand(action.text)">{{action.text}}</button>
-                </div>
-                <div *ngIf="!attachment.query_help && attachment.fields" class="key-value-container clearfix" [ngStyle]="{'border-left': '3px solid'+attachment.color}">
-                    <div class="properties col-6 float-left clearfix" *ngFor="let field of attachment.fields">
-                        <div class="property-fields clearfix">
-                            <div class="float-left">
-                                <a class="field-name">{{field.title}}</a>
-                                <p class="field-value" [ngClass]="{'nomargin':attachment.title_link}">{{field.value ? field.value : '---'}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </markdown>
-        </div>
-        <p *ngIf="message.showing && message.showing !== 0" class="count-records nomargin">{{message.showing}} out of {{message.total}}</p>
+        'float-left incoming-msg': message.left == true,
+        'float-right outgoing-msg': message.left == false
+     }" [ngStyle]="{'display': message.heading == true ? 'none' : 'block'}">
+        <p class="nomargin" [ngClass]="{'attachment-text': message.left === true}"> {{message.author}}: {{message.message}}</p>
+    </div>
+</div>
+<div class="col-12 chatheadingContainer" [ngStyle]="{'display': message.heading == true ? 'flex' : 'none'}">
+    <div class="chatheading">
+        <p class="nomargin">{{message.message}}</p>
     </div>
 </div>

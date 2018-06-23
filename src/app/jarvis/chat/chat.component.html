@@ -5,10 +5,20 @@
       <div #container></div>
     </div>
   </div>
-  <!-- Footer Section -->    
+  <!-- Footer Section -->
   <div class="col-12 footer_css footer-container">
-    <div class="col-11 nopadding float-left clearfix typing-area">
-      <input type="text" #inputMessage [(ngModel)]="message" name="typing-box" (keyup.enter)="sendMessage()" class="typing-box" [autofocus]="message">
+    <div class="col-12 nopadding float-left clearfix typing-area" style="margin-bottom:5px">
+      <input type="checkbox" [(ngModel)]="heading" style="margin-left: 16px;">Heading
+      <input type="checkbox" [(ngModel)]="left" style="margin-left: 16px;">Align Left
+      <label style="margin-left: 16px;">Author(Left)</label>
+      <input type="text" [(ngModel)]="authorLeft" class="typing-box" style="width:25%;margin-left: 16px;">
+      <label style="margin-left: 16px;">Author(Right)</label>
+      <input type="text" [(ngModel)]="authorRight" class="typing-box" style="width:25%;margin-left: 16px;">
+    </div>
+    <div class="clearfix"></div>
+    <div class=" col-11 nopadding float-left clearfix typing-area">
+      <input type="text" #inputMessage [(ngModel)]="message" name="typing-box" (keyup.enter)="sendMessage()" class="typing-box"
+        [autofocus]="message">
     </div>
     <div class="col-1 nopadding float-right send-box" (click)="sendMessage()">
       <span class="float-right icon">
