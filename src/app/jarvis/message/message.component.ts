@@ -10,9 +10,10 @@ import { MarkdownService } from 'ngx-markdown';
 })
 
 export class MessageComponent implements OnInit {
-
+    _ref: any;
     private _buttonCommand: BehaviorSubject<any>;
     @Input() message: any;
+    @Output() deleteMessageFromJson = new EventEmitter();
 
     constructor(private markdownService: MarkdownService) {
         this._buttonCommand = new BehaviorSubject("");
@@ -23,6 +24,15 @@ export class MessageComponent implements OnInit {
             return text;
         }
     }
+
+    deleteMessage(messageNumber: number) {
+        this._ref.destroy();
+        this.deleteMessageFromJson.emit(messageNumber);
+    }
+
+    // removeObject() {
+    //     this._ref.destroy();
+    // }
 
     getButtonCommand(): Observable<any> {
         return this._buttonCommand.asObservable();
@@ -35,4 +45,5 @@ export class MessageComponent implements OnInit {
     sendButtonCommand(command) {
         this.setButtonCommand(command);
     }
+
 }

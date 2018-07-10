@@ -14,7 +14,7 @@
 .typing-box{
     width: 100%;
     height: 100%;
-    background: transparent;
+    /*background: transparent;*/
     color: #fff;
     padding: 0px 10px;
     border: 1px solid #4C4B4C;
