@@ -1,7 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from "rxjs/Observable";
-import { MarkdownService } from 'ngx-markdown';
 
 @Component({
     selector: 'app-message',
@@ -15,14 +14,11 @@ export class MessageComponent implements OnInit {
     @Input() message: any;
     @Output() deleteMessageFromJson = new EventEmitter();
 
-    constructor(private markdownService: MarkdownService) {
+    constructor() {
         this._buttonCommand = new BehaviorSubject("");
     }
 
     ngOnInit() {
-        this.markdownService.renderer.paragraph = (text: string) => {
-            return text;
-        }
     }
 
     deleteMessage(messageNumber: number) {

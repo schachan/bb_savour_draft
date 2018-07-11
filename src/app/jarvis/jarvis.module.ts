@@ -6,8 +6,8 @@ import { ChatComponent } from './chat/chat.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-	{ path: 'dashboard', component: ChatComponent },
-	{ path: '', redirectTo: 'dashboard', pathMatch: 'full'}
+	{ path: '', component: ChatComponent }
+	// { path: '', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
