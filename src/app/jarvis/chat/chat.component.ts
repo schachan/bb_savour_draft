@@ -80,7 +80,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 this.author = this.authorRight;
             }
             this.addToMessagesList({
-                messageNumber: this.bookContent[this.bookContent.length - 1]["messageNumber"] + 1,
+                messageNumber: this.bookContent.length == 0 ? 0 : (this.bookContent[this.bookContent.length - 1]["messageNumber"] + 1),
                 author: TextAuthor,
                 message: TextMessage,
                 left: directionLeft || false,
