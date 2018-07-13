@@ -1,6 +1,6 @@
 import {
     AfterViewChecked, Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ComponentRef,
-    ViewContainerRef
+    ViewContainerRef, HostListener
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageComponent } from '../message/message.component';
@@ -34,8 +34,26 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public bookContent: Array<object> = [];
     public responseMessage: string = "";
     public openResponseMessage: string = "";
+    public newInnerHeight: any;
+    public newInnerWidth: any;
+    public IsMobile: boolean = false;
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
+        // User screen size
+        const screenWidth = window.screen.width;
+        if (screenWidth < 768) {
+            this.IsMobile = true;
+        }
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        this.newInnerWidth = event.target.innerWidth;
+        if (this.newInnerWidth < 768) {
+            this.IsMobile = true;
+        } else {
+            this.IsMobile = false;
+        }
     }
 
     ngOnInit() {
