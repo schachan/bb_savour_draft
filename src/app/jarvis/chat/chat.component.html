@@ -1,4 +1,4 @@
-<div #chatScroll class="jarvis-container clearfix" style="padding-bottom: 210px;">
+<div #chatScroll class="jarvis-container clearfix" [ngStyle]="{'padding-bottom': IsMobile == true ? '360px' : '210px'}">
   <!-- Messages Section -->
   <div class="chat-holder">
     <div class="chat-message-container">
@@ -6,10 +6,10 @@
     </div>
   </div>
   <!-- Footer Section -->
-  <div class="col-md-12 footer_css footer-container" style="height: 160px;">
+  <div class="col-md-12 footer_css footer-container" style="height: 160px;" *ngIf="!IsMobile">
     <div class="row">
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Author <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Author(Left) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorLeft" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
@@ -36,6 +36,46 @@
         <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 footer_css footer-container" style="height: 350px;padding:0px 10px 0px 10px" *ngIf="IsMobile">
+    <div class="row" style="height: 120px;">
+      <div class="col-md-12 typing-area">
+        <label>Author(Left) <span style="color: red;font-size: 16px;">*</span></label>
+        <input type="text" [(ngModel)]="authorLeft" class="typing-box">
+        <label>Message <span style="color: red;font-size: 16px;">*</span></label>
+        <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
+        <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
+          <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="height: 60px;">
+      <div class="col-md-12 typing-area">
+        <label>Heading - Message <span style="color: red;font-size: 16px;">*</span></label>
+        <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
+        <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
+          <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="height: 120px;">
+      <div class="col-md-12 typing-area">
+        <label>Author(Right) <span style="color: red;font-size: 16px;">*</span></label>
+        <input type="text" [(ngModel)]="authorRight" class="typing-box">
+        <label>Message <span style="color: red;font-size: 16px;">*</span></label>
+        <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
+        <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
+          <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" style="text-align: center;margin-top: 5px;">
+        <span class="btn-send btn btn-primary" style="float:none;" (click)="open(content)"><i class="fa fa-save"></i> Submit</span>        &nbsp;
+        <span class="btn-send btn btn-warning" style="float:none" (click)="open(contentEdit)"><i class="fa fa-pencil"></i> Re-Open</span>
       </div>
     </div>
   </div>
