@@ -1,0 +1,739 @@
+{ 
+    "_id" : "7nd9Fuq0cR", 
+    "summary" : {
+        "content" : [
+            {
+                "author" : "Pooja  ", 
+                "message" : " Hey Natasha, whassup ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Hi Pooja", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I saw your photo on page 3 of today's newspaper", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Oh ya. It was an amazing party, you know ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Your saree looked mind blowing! Whose collection? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Oh, that's the latest from Animesh's collection, you know", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Wow, Animesh!  ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " That must have cost a bomb", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Ah, you know me Pooja. I always go for the best ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Yes, that you do ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Natasha?", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Yup?", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I need a favour ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Anything for you Pooja. You are my bestie 😍😍 ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " 😍😍 ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Rishi & I have an invite to the wedding reception of a royal family scion, next week ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Ooh, so you will be a Page 3 celebrity soon", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " ha ha ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Hey listen na, it's a high profile social gathering ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I am wondering what I should wear to the reception party ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : "🤔 ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " How about that gorgeous lehenga from your wedding, Pooja? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Shut up, I have worn that thrice this year already. ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I have an idea ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Can I borrow your Animesh dress for the party? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " We are the same body type, you know? The fitting will not be a problem", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Really Pooja, you liked that dress so much? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Anything for my bestie", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Just return it before the end of next week", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " And yes, you know it cost me Rs 700,000. Please take VERY GOOD care of it ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Thank you Natasha…I knew I could lean on you.  ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I will get it collected from your home ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : "🤗 ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " 🤗 ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "", 
+                "message" : "WEDDING RECEPTION DAY", 
+                "left" : true, 
+                "heading" : true
+            }, 
+            {
+                "author" : "Pooja", 
+                "imgUrl" : "http://res.cloudinary.com/bookbhook/image/upload/v1516088598/DressImage_ap7t5k.jpg", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " WOW Pooja. You are looking GORGEOUS ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Thank you ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "", 
+                "message" : "THE DAY AFTER THE WEDDING RECEPTION", 
+                "left" : true, 
+                "heading" : true
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : "Rishi? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : "You have reached Bangalore? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Yeah sweetheart. And I am totally drained ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Catching an early morning flight after the wedding reception yesterday night has totally pooped me.", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " And you were looking gorgeous yesterday night! 😘 ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Rishi?", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " There is a problem", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " What? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " The saree I wore to the party yesterday night….", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " It's a lovely saree. When did you buy it?", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I did not ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I borrowed it ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " You borrowed it? From whom? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " From Natasha ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Why would you borrow a saree from Natasha! ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Because it's so gorgeous…you liked it, didn’t you? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Yes, but still, why borrow? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Rishi. There's a problem ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " WHAT IS THE PROBLEM?", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Natasha's saree got torn yesterday night ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " It caught something sharp, and there's a long tear in it", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " This happened on our way back from the reception", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " So you borrow a saree from your friend, and then you manage to damage it", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Pooja, I am speechless 😡😡", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " What do we do now? You will have to apologise to Natasha", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Actually Rishi, it's quite an expensive saree ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Natasha might not be satisfied with just an apology", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " OK, so buy a saree for Natasha. That's the only option now. ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I know Rishi ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " But there is another problem ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : "What now? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " That saree is an Animesh creation ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Who is Animesh? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " He is a leading designer ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " So? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I just went to Animesh's couture showroom on MG Road ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " They have a similar version of Natasha's saree ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " OK, buy it", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Actually, it costs Rs 700,000 ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " WHAT!!! ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Are you sure you added the right number of 0s ?", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Seven lakhs for a saree!!! 😳", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Your apology to Natasha will be far cheaper", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Please apologise to her", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Rishi, I am really sorry. But an apology will not work with her", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I have known her for 20 years now. In these matters, she is a b**ch ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " That she may be, but I am not going to spend 7 lakhs for your friend's saree ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Rishi, listen na…. ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " I have already bought that saree ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " 😤", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " You are telling me all this after you have bought the saree!", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi ", 
+                "message" : " Your credit card would have maxed out !", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Yes, it did. So I paid part of it by cash ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi", 
+                "message" : " Pooja, I am getting into a meeting now. We will speak when I am back in Delhi tomorrow night ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi", 
+                "message" : " HOW CAN YOU BE SO STUPID. 7 LAKHS ON A SAREE FOR YOUR FRIEND !  ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Rishi", 
+                "message" : " That's my hard earned money down the drain only because of your stupidity.", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Sorry, Rishi ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "", 
+                "message" : "FOUR DAYS LATER", 
+                "left" : true, 
+                "heading" : true
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Hi Natasha", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Hi bestie! How have you been? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Hey listen, I sent back the Animesh creation saree day before ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Thank you for lending it to me. You got it, right? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Yes, I did. Thanks a lot ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Hope you are happy with the condition of the saree? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha ", 
+                "message" : " I did not check. I just gave it back in the same packet that you sent it in", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Gave it back? To whom? ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " oh 🤦🏻‍♀", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Pooja, can you keep a secret?", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Telling this only to you as you are my bestie", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " What secret, Natasha?", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha ", 
+                "message" : " There is this new online startup that lends high end couture dresses on weekly rental plans. ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha ", 
+                "message" : " I had rented that Animesh saree from the online startup ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha ", 
+                "message" : " They picked it back yesterday ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja ", 
+                "message" : " Natasha, how much was the rental for that saree you lent me?", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " Only Rs 35000 for a week! And the price tag of that saree is Rs 700,000 ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " That's such a deal, no? ", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Natasha  ", 
+                "message" : " But don't tell this to anyone", 
+                "left" : false, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " No Natasha, I will not tell this to anyone ", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "Pooja  ", 
+                "message" : " Not even to Rishi", 
+                "left" : true, 
+                "heading" : false
+            }, 
+            {
+                "author" : "", 
+                "message" : "We hope you savoured this adapted version of an original short story by Guy de Maupassant, titled 'The Necklace'. Maupassant  is a French writer from the 19th century, and a master in short story format. ", 
+                "left" : true, 
+                "heading" : true
+            }, 
+            {
+                "author" : "", 
+                "message" : "Savour from bookbhook brings to you adapted short stories, both original, as well as those written by famous writers. In case of adaptations, we acknowledge the original story source. Images used in this story are original or necessary permissions taken.Please visit bookbhook.com for more details. ", 
+                "left" : true, 
+                "heading" : true
+            }
+        ]
+    }, 
+    "_created_at" : ISODate("2018-01-16T07:55:29.469+0000"), 
+    "_updated_at" : ISODate("2018-05-24T11:33:43.786+0000"), 
+    "shortDescription" : "When you do not stay updated with the latest in fashion.", 
+    "authorDescriptionHindi" : "When you do not stay updated with the latest in fashion.", 
+    "hindiPresent" : false, 
+    "author" : "Adapted from a Guy de Maupassant short story", 
+    "time" : "At bookbhook, our aim is to unlock books for the time starved generation. Which is why we are building the new-gen library for the TLDR generation", 
+    "authorDescription" : "Adapted from a Guy de Maupassant short story", 
+    "bookImage" : "422e2586e83980eeb54c940e9b5e3aff_TheSaree.jpg", 
+    "highlight" : true, 
+    "bookName" : "The Saree", 
+    "rating" : "3.8"
+}
