@@ -37,6 +37,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public newInnerHeight: any;
     public newInnerWidth: any;
     public IsMobile: boolean = false;
+    display = 'none';
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
         // User screen size
@@ -57,7 +58,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     ngOnInit() {
-
+        this.openModal();
     }
 
     ngAfterViewChecked() {
@@ -69,6 +70,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             this.myScrollContainer.nativeElement.scrollIntoView(false);
         } catch (err) { }
     }
+
+    openModal() {
+        this.display = 'block';
+    }
+
+    onCloseHandled() {
+        this.display = 'none';
+    }
+
 
     sendMessage(containerId) {
         var TextMessage = '';

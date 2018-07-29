@@ -9,7 +9,7 @@
   <div class="col-md-12 footer_css footer-container" style="height: 160px;" *ngIf="!IsMobile">
     <div class="row">
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Author(Left) <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorLeft" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Heading - Message <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
@@ -26,10 +26,11 @@
         <div class="col-12" style="text-align: center;margin-top: 24px;">
           <span class="btn-send btn btn-primary" style="float:none;" (click)="open(content)"><i class="fa fa-save"></i> Submit</span>          &nbsp;
           <span class="btn-send btn btn-warning" style="float:none" (click)="open(contentEdit)"><i class="fa fa-pencil"></i> Re-Open</span>
+          <button type="button" class="btn-send btn btn-default" style="margin-left:10px;float:none" (click)="openModal()"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Author(Right) <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorRight" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
@@ -43,7 +44,7 @@
   <div class="col-md-12 footer_css footer-container" style="height: 350px;padding:0px 10px 0px 10px" *ngIf="IsMobile">
     <div class="row" style="height: 120px;">
       <div class="col-md-12 typing-area">
-        <label>Author(Left) <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorLeft" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
@@ -54,7 +55,7 @@
     </div>
     <div class="row" style="height: 60px;">
       <div class="col-md-12 typing-area">
-        <label>Heading - Message <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
@@ -63,7 +64,7 @@
     </div>
     <div class="row" style="height: 120px;">
       <div class="col-md-12 typing-area">
-        <label>Author(Right) <span style="color: red;font-size: 16px;">*</span></label>
+        <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorRight" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
@@ -76,6 +77,7 @@
       <div class="col-12" style="text-align: center;margin-top: 5px;">
         <span class="btn-send btn btn-primary" style="float:none;" (click)="open(content)"><i class="fa fa-save"></i> Submit</span>        &nbsp;
         <span class="btn-send btn btn-warning" style="float:none" (click)="open(contentEdit)"><i class="fa fa-pencil"></i> Re-Open</span>
+        <button type="button" class="btn-send btn btn-default" style="margin-left:10px;float:none" (click)="openModal()"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -83,7 +85,7 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" style="color:#343a40">Book Submission</h4>
+    <h4 class="modal-title" style="color:#343a40">CHAT STORY SUBMISSION</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -91,7 +93,7 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-12">
-        <label style="color:#343a40">Book <span style="color: red;font-size: 16px;">*</span></label>
+        <label style="color:#343a40">Chat Story Name <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="bookName" name="typing-box" class="form-control" [autofocus]="bookName">
       </div>
       <div class="col-12">
@@ -104,14 +106,14 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn-send btn btn-primary" (click)="saveBookDetails()">Save Book</button>
+    <button type="button" class="btn-send btn btn-primary" (click)="saveBookDetails()">Save Chat Story</button>
     <button type="button" class="btn-send btn btn-default" (click)="d('Cross click')">Close</button>
   </div>
 </ng-template>
 
 <ng-template #contentEdit let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" style="color:#343a40">Edit Book</h4>
+    <h4 class="modal-title" style="color:#343a40">Edit Chat Story</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -119,7 +121,7 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-12">
-        <label style="color:#343a40">Book Id<span style="color: red;font-size: 16px;">*</span></label>
+        <label style="color:#343a40">Chat Story Id<span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="bookId" name="typing-box" class="form-control" [autofocus]="bookId">
       </div>
       <div class="col-12">
@@ -132,3 +134,36 @@
     <button type="button" class="btn-send btn btn-default" (click)="d('Cross click')">Close</button>
   </div>
 </ng-template>
+
+<div id="backdrop" style="position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 999999; background: rgba(0,0,0,0.7);"
+  [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}" style="z-index:999999">
+  <div class="modal-dialog modal-lg" role="document" style="color:black">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Instructions</h4>
+      </div>
+      <div class="modal-body" style="max-height: 400px;overflow: auto;">
+        <h5>Please note the following before you submit a chat story with bookbhook </h5>
+        <ol type="1">
+          <li>If your chat story is being narrated by in first person, please use NAME (right) as 'Me'</li>
+          <li>You can add emojis in the chat story.</li>
+          <li>If your chat story requires messages with image, please type the dialogue 'INSERT IMAGE HERE' and submit the dialogue.
+            Editors at bookbhook will reach out to you to decide the image</li>
+          <li>Once you submit a story, you will be given a BOOKID. Please mail this BOOKID as subject heading to <a href="mailto:response@bookbhook.com">response@bookbhook.com</a></li>
+          <li>The responsibility of the content lies with the writer. bookbhook is not in a position to verify source of the
+            chat story</li>
+          <li>By submitting a chat story, you are agreeing to the terms listed on <a href="https://bookbhook.com/terms-and-conditions/"
+              target="_blank">https://bookbhook.com/terms-and-conditions/</a></li>
+          <li>Marcus Aurelius Learning Solutions Pvt Ltd reserves the right to refuse any story without any explanation</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal !-->
