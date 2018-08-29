@@ -13,6 +13,7 @@ export class MessageComponent implements OnInit {
     private _buttonCommand: BehaviorSubject<any>;
     @Input() message: any;
     @Output() deleteMessageFromJson = new EventEmitter();
+    @Output() editMessageFromJson = new EventEmitter();
 
     constructor() {
         this._buttonCommand = new BehaviorSubject("");
@@ -24,6 +25,10 @@ export class MessageComponent implements OnInit {
     deleteMessage(messageNumber: number) {
         this._ref.destroy();
         this.deleteMessageFromJson.emit(messageNumber);
+    }
+
+    editMessage(messageNumber: number) {
+        this.editMessageFromJson.emit(messageNumber);
     }
 
     // removeObject() {

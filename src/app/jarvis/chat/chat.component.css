@@ -107,3 +107,4 @@ label {
 .send-box .btn{
         padding: 4px 10px !important;
 }
+[hidden] { display: none !important;}
