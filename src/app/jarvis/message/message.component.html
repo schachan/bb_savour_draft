@@ -6,14 +6,14 @@
         'float-left incoming-msg': message.left == true,
         'float-right outgoing-msg': message.left == false
      }" [ngStyle]="{'display': message.heading == true ? 'none' : 'block'}">
-        <span [ngStyle]="{'display': message.left == true ? 'block' : 'none'}" style="color: #e542a3;font-size: 15px;font-weight: 600;border-bottom: 1px dotted">{{message.author}} <span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: white"></i></span></span>
-        <span [ngStyle]="{'display': message.left == false ? 'block' : 'none'}" style="color: #6bcbef;font-size: 15px;font-weight: 600;border-bottom: 1px dotted">{{message.author}} <span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: white"></i></span></span>
+        <span [ngStyle]="{'display': message.left == true ? 'block' : 'none'}" style="color: #e542a3;font-size: 15px;font-weight: 600;border-bottom: 1px dotted">{{message.author}} <span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: white;cursor: pointer;"></i></span></span>
+        <span [ngStyle]="{'display': message.left == false ? 'block' : 'none'}" style="color: #6bcbef;font-size: 15px;font-weight: 600;border-bottom: 1px dotted">{{message.author}} <span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: white;cursor: pointer;"></i></span></span>
         <p class="nomargin" [ngClass]="{'attachment-text': message.left === true}"> {{message.message}}</p>
-        <span (click)="editMessage(message.messageNumber)"><i class="fa fa-edit" style="color: white"></i></span>
+        <span (click)="editMessage(message.messageNumber)"><i class="fa fa-edit" style="color: white;cursor: pointer;"></i></span>
     </div>
 </div>
 <div class="col-12 chatheadingContainer" [ngStyle]="{'display': message.heading == true ? 'flex' : 'none'}">
     <div class="chatheading">
-        <p class="nomargin">{{message.message}} &nbsp;&nbsp;<span (click)="editMessage(message.messageNumber)"><i class="fa fa-edit" style="color: black"></i></span>&nbsp;&nbsp;<span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: black"></i></span></p>
+        <p class="nomargin">{{message.message}} &nbsp;&nbsp;<span (click)="editMessage(message.messageNumber)"><i class="fa fa-edit" style="color: black;cursor: pointer;"></i></span>&nbsp;&nbsp;<span (click)="deleteMessage(message.messageNumber)"><i class="fa fa-times" style="color: black;cursor: pointer;"></i></span></p>
     </div>
 </div>
