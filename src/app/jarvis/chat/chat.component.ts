@@ -38,6 +38,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public newInnerWidth: any;
     public IsMobile: boolean = false;
     display = 'none';
+    public editAuthor: string = "";
+    public editTextMessage: string = "";
+    public editleft: boolean = false;
+    public editheading: boolean = false;
+    public isHeading: boolean = false;
+    public isLeftDirection: boolean = false;
+    editDisplay = 'none';
+    public messageId: number;
+
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
         // User screen size
@@ -73,6 +82,16 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     openModal() {
         this.display = 'block';
+    }
+
+    openEditModal() {
+        this.editTextMessage = "";
+        this.editAuthor = "";
+        this.editDisplay = 'block';
+    }
+
+    onCloseHandledEdit() {
+        this.editDisplay = 'none';
     }
 
     onCloseHandled() {
@@ -133,6 +152,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.dynamicComponentRef.instance.deleteMessageFromJson.subscribe((value: any) => {
             this.deleteMessages(value);
         });
+        this.dynamicComponentRef.instance.editMessageFromJson.subscribe((value: any) => {
+            this.editMessage(value);
+        });
         this.dynamicComponentRef.instance._ref = this.dynamicComponentRef;
         this.bookContent.push(data);
     }
@@ -141,6 +163,68 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageNumber) {
                 this.bookContent.splice(index, 1);
+            }
+        });
+    }
+
+    editMessage(messageNumber: number) {
+        this.openEditModal();
+        this.bookContent.forEach((element, index) => {
+            if (element["messageNumber"] == messageNumber) {
+                this.messageId = messageNumber;
+                if (element["heading"]) {
+                    this.isHeading = true;
+                    this.editheading = true;
+                    this.editTextMessage = element["message"];
+                } else {
+                    if (element["left"]) {
+                        this.isLeftDirection = true;
+                        this.editleft = true;
+                        this.editAuthor = element["author"];
+                        this.editTextMessage = element["message"];
+                    }
+                    else {
+                        this.isLeftDirection = false;
+                        this.editleft = false;
+                        this.editAuthor = element["author"];
+                        this.editTextMessage = element["message"];
+                    }
+                }
+            }
+        });
+    }
+
+    changeMessage() {
+        this.isHeading = !this.isHeading;
+    }
+
+    changeDirection() {
+        this.isLeftDirection = !this.isLeftDirection;
+    }
+
+    updateMessage(messageId: number) {
+        this.bookContent.forEach((element, index) => {
+            if (element["messageNumber"] == messageId) {
+                if (this.isHeading) {
+                    element["heading"] = true;
+                    element["left"] = false;
+                    element["author"] = "";
+                    element["message"] = this.editTextMessage;
+                } else {
+                    if (this.isLeftDirection) {
+                        element["heading"] = false;
+                        element["left"] = true;
+                        element["author"] = this.editAuthor;
+                        element["message"] = this.editTextMessage;
+                    }
+                    else {
+                        element["heading"] = false;
+                        element["left"] = false;
+                        element["author"] = this.editAuthor;
+                        element["message"] = this.editTextMessage;
+                    }
+                }
+                this.onCloseHandledEdit();
             }
         });
     }
