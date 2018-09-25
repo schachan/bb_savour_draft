@@ -1,6 +1,7 @@
 <div #chatScroll class="jarvis-container clearfix" [ngStyle]="{'padding-bottom': IsMobile == true ? '360px' : '210px'}">
   <!-- Messages Section -->
   <div class="chat-holder">
+    <div><span style="font-size: 15px;font-weight: 700;float:right;color:black;position: fixed;right:10px !important;z-index: 9999;">Total Words Count : {{wordCount}}</span></div>
     <div class="chat-message-container">
       <div #container></div>
     </div>

@@ -45,7 +45,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public isHeading: boolean = false;
     public isLeftDirection: boolean = false;
     editDisplay = 'none';
-    public messageId: number;
+    public messageId: number = 1;
+    public wordCount: number = 0;
+    public isNewMsg: boolean = false;
 
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
@@ -127,7 +129,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 this.author = this.authorRight;
             }
             this.addToMessagesList({
-                messageNumber: this.bookContent.length == 0 ? 0 : (this.bookContent[this.bookContent.length - 1]["messageNumber"] + 1),
+                messageNumber: this.bookContent.length == 0 ? 1 : (this.bookContent[this.bookContent.length - 1]["messageNumber"] + 1),
                 author: TextAuthor,
                 message: TextMessage,
                 left: directionLeft || false,
@@ -153,21 +155,24 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             this.deleteMessages(value);
         });
         this.dynamicComponentRef.instance.editMessageFromJson.subscribe((value: any) => {
-            this.editMessage(value);
+            this.editMessage(value.messageNumber, value.isNewMsg);
         });
         this.dynamicComponentRef.instance._ref = this.dynamicComponentRef;
         this.bookContent.push(data);
+        this.countBookContent();
     }
 
     deleteMessages(messageNumber: number) {
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageNumber) {
                 this.bookContent.splice(index, 1);
+                this.countBookContent();
             }
         });
     }
 
-    editMessage(messageNumber: number) {
+    editMessage(messageNumber: number, isNewMsg: boolean) {
+        this.isNewMsg = isNewMsg;
         this.openEditModal();
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageNumber) {
@@ -178,12 +183,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.editTextMessage = element["message"];
                 } else {
                     if (element["left"]) {
+                        this.isHeading=false;
                         this.isLeftDirection = true;
                         this.editleft = true;
                         this.editAuthor = element["author"];
                         this.editTextMessage = element["message"];
                     }
                     else {
+                        this.isHeading=false;
                         this.isLeftDirection = false;
                         this.editleft = false;
                         this.editAuthor = element["author"];
@@ -192,6 +199,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 }
             }
         });
+        this.countBookContent();
     }
 
     changeMessage() {
@@ -203,30 +211,57 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     updateMessage(messageId: number) {
+        let updatedData= Object.assign([], this.bookContent);
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageId) {
-                if (this.isHeading) {
-                    element["heading"] = true;
-                    element["left"] = false;
-                    element["author"] = "";
-                    element["message"] = this.editTextMessage;
-                } else {
-                    if (this.isLeftDirection) {
-                        element["heading"] = false;
-                        element["left"] = true;
-                        element["author"] = this.editAuthor;
-                        element["message"] = this.editTextMessage;
-                    }
-                    else {
-                        element["heading"] = false;
+                if (!this.isNewMsg) {
+                    if (this.isHeading) {
+                        element["heading"] = true;
                         element["left"] = false;
-                        element["author"] = this.editAuthor;
+                        element["author"] = "";
                         element["message"] = this.editTextMessage;
+                    } else {
+                        if (this.isLeftDirection) {
+                            element["heading"] = false;
+                            element["left"] = true;
+                            element["author"] = this.editAuthor;
+                            element["message"] = this.editTextMessage;
+                        }
+                        else {
+                            element["heading"] = false;
+                            element["left"] = false;
+                            element["author"] = this.editAuthor;
+                            element["message"] = this.editTextMessage;
+                        }
                     }
+                } else {
+                    var content = {
+                        messageNumber: index != 0 ? ((this.bookContent[index - 1]["messageNumber"] + messageId) / 2) : (messageId/2),
+                        author: this.editAuthor,
+                        message: this.editTextMessage,
+                        left: this.isLeftDirection,
+                        heading: this.isHeading
+                    };
+                    updatedData.splice(index, 0, content);
                 }
                 this.onCloseHandledEdit();
             }
         });
+        if (this.isNewMsg) {
+            this.container.clear();
+            this.bookContent = [];
+            updatedData.forEach((element, index) => {
+                var content = {
+                    messageNumber: element["messageNumber"],
+                    author: element["author"],
+                    message: element["message"],
+                    left: element["left"],
+                    heading: element["heading"]
+                };
+                this.addToMessagesList(content);
+            });
+        }
+        this.countBookContent();
     }
 
     open(content) {
@@ -279,7 +314,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         var jsonData: Object = {
             "title": this.bookName,
             "author": this.bookWriter,
-            "content": this.bookContent
+            "content": this.bookContent,
+            "wordCount": this.wordCount
         };
 
         this.baseService.post(jsonData, this.bookId).subscribe(
@@ -288,12 +324,21 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.bookId = res["data"];
                     var msg = "Your book has been saved/updated successfuly.You can use the below book id for edit and other purpose. Book Id = " + res["data"];
                     this.responseMessage = msg;
+                    this.wordCount = 0;
                 }
             },
             err => {
                 console.log(err);
             }
         );
+    }
+
+    countBookContent() {
+        var words = 0;
+        this.bookContent.forEach((element, index) => {
+            words += element["message"].split(' ').length;
+        });
+        this.wordCount = words;
     }
 
 }

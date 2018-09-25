@@ -27,8 +27,12 @@ export class MessageComponent implements OnInit {
         this.deleteMessageFromJson.emit(messageNumber);
     }
 
-    editMessage(messageNumber: number) {
-        this.editMessageFromJson.emit(messageNumber);
+    editMessage(messageNumber: number,isNewMsg : boolean) {
+        var data={
+           messageNumber :  messageNumber,
+            isNewMsg : isNewMsg
+        };
+        this.editMessageFromJson.emit(data);
     }
 
     // removeObject() {
