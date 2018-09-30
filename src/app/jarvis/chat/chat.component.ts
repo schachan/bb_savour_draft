@@ -415,7 +415,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                         };
                         this.addToMessagesList(content);
                     });
-                    var msg = "Your book has been opened successfuly.";
+                    var msg = "Your chat story has been opened successfuly.";
                     this.openResponseMessage = msg;
                 }
             },
@@ -437,7 +437,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             res => {
                 if (res["success"]) {
                     this.bookId = res["data"];
-                    var msg = "Your book has been saved/updated successfuly.You can use the below book id for edit and other purpose. Book Id = " + res["data"];
+                    var msg = "Your chat story is saved successfuly.You can use the below book id for editing and future references. \nBook Id =" + res["data"];
                     this.responseMessage = msg;
                     this.wordCount = 0;
                 }
