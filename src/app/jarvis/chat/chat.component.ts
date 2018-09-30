@@ -451,7 +451,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     countBookContent() {
         var words = 0;
         this.bookContent.forEach((element, index) => {
-            words += element["message"].split(' ').length;
+            if ("message" in element) {
+               words += element["message"].split(' ').length;
+            }
         });
         this.wordCount = words;
     }
