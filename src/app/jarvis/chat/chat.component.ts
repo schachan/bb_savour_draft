@@ -48,7 +48,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public messageId: number = 1;
     public wordCount: number = 0;
     public isNewMsg: boolean = false;
-
+    public msgTypeLeft: string = "Text";
+    public msgTypeRight: string = "Text";
+    public msgTypeEdit: string;
+    public modalHeader: string = "Update Message";
+    public btnText: string = "Update";
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
         // User screen size
@@ -128,13 +132,48 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             else {
                 this.author = this.authorRight;
             }
-            this.addToMessagesList({
+
+            var data = {
                 messageNumber: this.bookContent.length == 0 ? 1 : (this.bookContent[this.bookContent.length - 1]["messageNumber"] + 1),
                 author: TextAuthor,
-                message: TextMessage,
                 left: directionLeft || false,
-                heading: heading || false
-            });
+                heading: heading || false,
+                message: TextMessage,
+                msgType:'Text'
+            };
+            if (containerId == 1) {
+                if (this.msgTypeLeft == "GIF") {
+                    data["gif"] = true;
+                    data["imgUrl"] = TextMessage;
+                    data["msgType"] = 'GIF';
+                }
+                if (this.msgTypeLeft == "Image") {
+                    data["imgUrl"] = TextMessage;
+                    data["msgType"] = 'Image';
+                }
+                if (this.msgTypeLeft == "Video") {
+                    data["videoId"] = TextMessage;
+                    data["msgType"] = 'Video';
+                }
+            }
+
+            if (containerId == 3) {
+                if (this.msgTypeRight == "GIF") {
+                    data["gif"] = true;
+                    data["imgUrl"] = TextMessage;
+                    data["msgType"] = 'GIF';
+                }
+                if (this.msgTypeRight == "Image") {
+                    data["imgUrl"] = TextMessage;
+                    data["msgType"] = 'Image';
+                }
+                if (this.msgTypeRight == "Video") {
+                    data["videoId"] = TextMessage;
+                    data["msgType"] = 'Video';
+                }
+            }
+
+            this.addToMessagesList(data);
             if (containerId == 1) {
                 this.messageLeft = "";
             }
@@ -173,6 +212,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     editMessage(messageNumber: number, isNewMsg: boolean) {
         this.isNewMsg = isNewMsg;
+        if (isNewMsg) {
+            this.modalHeader = "Insert New Message";
+            this.btnText = "Insert";
+        } else {
+            this.modalHeader = "Update Message";
+            this.btnText = "Update";
+        }
         this.openEditModal();
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageNumber) {
@@ -183,18 +229,35 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.editTextMessage = element["message"];
                 } else {
                     if (element["left"]) {
-                        this.isHeading=false;
+                        this.isHeading = false;
                         this.isLeftDirection = true;
                         this.editleft = true;
                         this.editAuthor = element["author"];
                         this.editTextMessage = element["message"];
                     }
                     else {
-                        this.isHeading=false;
+                        this.isHeading = false;
                         this.isLeftDirection = false;
                         this.editleft = false;
                         this.editAuthor = element["author"];
                         this.editTextMessage = element["message"];
+                        this.msgTypeEdit = "Text"
+                        if (element["videoId"]) {
+                            this.msgTypeEdit = "Video";
+                        } else if (element["gif"]) {
+                            this.msgTypeEdit = "GIF";
+                        } else {
+                            this.msgTypeEdit = "Image";
+                        }
+                    }
+                    if (element["videoId"]) {
+                        this.msgTypeEdit = "Video";
+                    } else if (element["gif"]) {
+                        this.msgTypeEdit = "GIF";
+                    } else if (element["imgUrl"]) {
+                        this.msgTypeEdit = "Image";
+                    } else {
+                        this.msgTypeEdit = "Text";
                     }
                 }
             }
@@ -211,7 +274,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     updateMessage(messageId: number) {
-        let updatedData= Object.assign([], this.bookContent);
+        let updatedData = Object.assign([], this.bookContent);
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageId) {
                 if (!this.isNewMsg) {
@@ -234,14 +297,62 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                             element["message"] = this.editTextMessage;
                         }
                     }
+                    if (this.msgTypeEdit == "GIF") {
+                        element["gif"] = true;
+                        element["imgUrl"] = this.editTextMessage;
+                        element["videoId"] = '';
+                        element["msgType"] = 'GIF';
+                    }
+                    if (this.msgTypeEdit == "Image") {
+                        element["imgUrl"] = this.editTextMessage;
+                        element["videoId"] = '';
+                        element["gif"] = false;
+                        element["msgType"] = 'Image';
+                    }
+                    if (this.msgTypeEdit == "Video") {
+                        element["videoId"] = this.editTextMessage;
+                        element["imgUrl"] = '';
+                        element["msgType"] = 'Video';
+                    }
+                    if (this.msgTypeEdit == "Text") {
+                        element["videoId"] = '';
+                        element["imgUrl"] = '';
+                        element["gif"] = false;
+                        element["msgType"] = 'Text';
+                    }
+
                 } else {
                     var content = {
-                        messageNumber: index != 0 ? ((this.bookContent[index - 1]["messageNumber"] + messageId) / 2) : (messageId/2),
+                        messageNumber: index != 0 ? ((this.bookContent[index - 1]["messageNumber"] + messageId) / 2) : (messageId / 2),
                         author: this.editAuthor,
                         message: this.editTextMessage,
                         left: this.isLeftDirection,
                         heading: this.isHeading
                     };
+                    if (this.msgTypeEdit == "GIF") {
+                        content["gif"] = true;
+                        content["imgUrl"] = this.editTextMessage;
+                        content["videoId"] = '';
+                        content["msgType"] = 'GIF';
+                    }
+                    if (this.msgTypeEdit == "Image") {
+                        content["imgUrl"] = this.editTextMessage;
+                        content["videoId"] = '';
+                        content["gif"] = false;
+                        content["msgType"] = 'Image';
+                    }
+                    if (this.msgTypeEdit == "Video") {
+                        content["videoId"] = this.editTextMessage;
+                        content["imgUrl"] = '';
+                        content["gif"] = false;
+                        content["msgType"] = 'Video';
+                    }
+                    if (this.msgTypeEdit == "Text") {
+                        content["videoId"] = '';
+                        content["imgUrl"] = '';
+                        content["gif"] = false;
+                        content["msgType"] = 'Text';
+                    }
                     updatedData.splice(index, 0, content);
                 }
                 this.onCloseHandledEdit();
@@ -256,7 +367,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     author: element["author"],
                     message: element["message"],
                     left: element["left"],
-                    heading: element["heading"]
+                    heading: element["heading"],
+                    gif: element["gif"] || false,
+                    imgUrl: element["imgUrl"] || '',
+                    videoId: element["videoId"] || '',
+                    msgType: element["msgType"]
                 };
                 this.addToMessagesList(content);
             });

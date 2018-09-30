@@ -1,4 +1,4 @@
-<div #chatScroll class="jarvis-container clearfix" [ngStyle]="{'padding-bottom': IsMobile == true ? '360px' : '210px'}">
+<div #chatScroll class="jarvis-container clearfix" [ngStyle]="{'padding-bottom': IsMobile == true ? '480px' : '210px'}">
   <!-- Messages Section -->
   <div class="chat-holder">
     <div><span style="font-size: 15px;font-weight: 700;float:right;color:black;position: fixed;right:10px !important;z-index: 9999;">Total Words Count : {{wordCount}}</span></div>
@@ -10,12 +10,29 @@
   <div class="col-md-12 footer_css footer-container" style="height: 160px;" *ngIf="!IsMobile">
     <div class="row">
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="authorLeft" class="typing-box">
-        <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
-        <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
-          <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+        <div class="row">
+          <div class="col-md-4 typing-area" style="margin-bottom:5px">
+            <label>Type <span style="color: red;font-size: 16px;">*</span></label>
+            <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" style="height: 32px;padding: 0px 0px 4px 6px;">
+              <option value="Text" [selected]="msgTypeLeft == 'Text'">Text</option>
+              <option value="Image" [selected]="msgTypeLeft == 'Image'">Image</option>
+              <option value="GIF" [selected]="msgTypeLeft == 'GIF'">GIF</option>
+              <option value="Video" [selected]="msgTypeLeft == 'Video'">Video</option>
+            </select>
+          </div>
+          <div class="col-md-8 typing-area" style="margin-bottom:5px">
+            <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
+            <input type="text" [(ngModel)]="authorLeft" class="typing-box">
+          </div>
+        </div>
+        <div class="row" style="margin-top: 27px;">
+          <div class="col-md-12 typing-area" style="margin-bottom:5px">
+            <label>Message <span style="color: red;font-size: 16px;">*</span></label>
+            <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
+            <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
+              <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
@@ -31,20 +48,44 @@
         </div>
       </div>
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
-        <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="authorRight" class="typing-box">
-        <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
-        <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
-          <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+        <div class="row">
+          <div class="col-md-4 typing-area" style="margin-bottom:5px">
+            <label>Type <span style="color: red;font-size: 16px;">*</span></label>
+            <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;">
+              <option value="Text" [selected]="msgTypeRight == 'Text'">Text</option>
+              <option value="Image" [selected]="msgTypeRight == 'Image'">Image</option>
+              <option value="GIF" [selected]="msgTypeRight == 'GIF'">GIF</option>
+              <option value="Video" [selected]="msgTypeRight == 'Video'">Video</option>
+            </select>
+          </div>
+          <div class="col-md-8 typing-area" style="margin-bottom:5px">
+            <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
+            <input type="text" [(ngModel)]="authorRight" class="typing-box">
+          </div>
+        </div>
+        <div class="row" style="margin-top: 27px;">
+          <div class="col-md-12 typing-area" style="margin-bottom:5px">
+            <label>Message <span style="color: red;font-size: 16px;">*</span></label>
+            <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
+            <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
+              <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="col-md-12 footer_css footer-container" style="height: 350px;padding:0px 10px 0px 10px" *ngIf="IsMobile">
-    <div class="row" style="height: 120px;">
+  <div class="col-md-12 footer_css footer-container" style="height: 470px;padding:0px 10px 0px 10px" *ngIf="IsMobile">
+    <div class="row" style="height: 180px;">
       <div class="col-md-12 typing-area">
+        <label>Type <span style="color: red;font-size: 16px;">*</span></label>
+        <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" style="height: 32px;padding: 0px 0px 4px 6px;">
+              <option value="Text" [selected]="msgTypeLeft == 'Text'">Text</option>
+              <option value="Image" [selected]="msgTypeLeft == 'Image'">Image</option>
+              <option value="GIF" [selected]="msgTypeLeft == 'GIF'">GIF</option>
+              <option value="Video" [selected]="msgTypeLeft == 'Video'">Video</option>
+            </select>
         <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorLeft" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
@@ -63,8 +104,15 @@
         </div>
       </div>
     </div>
-    <div class="row" style="height: 120px;">
+    <div class="row" style="height: 180px;">
       <div class="col-md-12 typing-area">
+        <label>Type <span style="color: red;font-size: 16px;">*</span></label>
+        <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;">
+              <option value="Text" [selected]="msgTypeRight == 'Text'">Text</option>
+              <option value="Image" [selected]="msgTypeRight == 'Image'">Image</option>
+              <option value="GIF" [selected]="msgTypeRight == 'GIF'">GIF</option>
+              <option value="Video" [selected]="msgTypeRight == 'Video'">Video</option>
+        </select>
         <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorRight" class="typing-box">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
@@ -200,10 +248,19 @@
   <div class="modal-dialog modal-lg" role="document" style="color:black">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Update Message</h4>
+        <h4 class="modal-title">{{modalHeader}}</h4>
       </div>
       <div class="modal-body">
         <div class="row">
+          <div class="col-12">
+            <label>Type <span style="color: red;font-size: 16px;">*</span></label>
+            <select class="form-control" [(ngModel)]="msgTypeEdit">
+              <option value="Text" [selected]="msgTypeEdit == 'Text'">Text</option>
+              <option value="Image" [selected]="msgTypeEdit == 'Image'">Image</option>
+              <option value="GIF" [selected]="msgTypeEdit == 'GIF'">GIF</option>
+              <option value="Video" [selected]="msgTypeEdit == 'Video'">Video</option>
+            </select>
+          </div>
           <div class="col-12">
             <label style="color:#343a40">Heading<span style="color: red;font-size: 16px;">*</span></label>
             <select class="form-control" [(ngModel)]="editheading" (change)="changeMessage()">
@@ -229,7 +286,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-send btn btn-primary" (click)="updateMessage(messageId)">Update</button>
+        <button type="button" class="btn-send btn btn-primary" (click)="updateMessage(messageId)">{{btnText}}</button>
         <button type="button" class="btn-send btn btn-default" (click)="onCloseHandledEdit()">Close</button>
       </div>
     </div>

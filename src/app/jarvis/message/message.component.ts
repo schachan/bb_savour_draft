@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from "rxjs/Observable";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-message',
@@ -14,12 +15,20 @@ export class MessageComponent implements OnInit {
     @Input() message: any;
     @Output() deleteMessageFromJson = new EventEmitter();
     @Output() editMessageFromJson = new EventEmitter();
+    @Input()
+    public youtubeurl: string = 'https://www.youtube.com/embed/';
+    urlSafe: SafeResourceUrl;
 
-    constructor() {
+    constructor(public sanitizer: DomSanitizer) {
         this._buttonCommand = new BehaviorSubject("");
     }
 
     ngOnInit() {
+        if (this.message["videoId"] && this.message["videoId"] != '') {
+            return this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeurl + this.message["videoId"]);
+        }else{
+            return this.urlSafe;
+        }
     }
 
     deleteMessage(messageNumber: number) {
@@ -27,10 +36,10 @@ export class MessageComponent implements OnInit {
         this.deleteMessageFromJson.emit(messageNumber);
     }
 
-    editMessage(messageNumber: number,isNewMsg : boolean) {
-        var data={
-           messageNumber :  messageNumber,
-            isNewMsg : isNewMsg
+    editMessage(messageNumber: number, isNewMsg: boolean) {
+        var data = {
+            messageNumber: messageNumber,
+            isNewMsg: isNewMsg
         };
         this.editMessageFromJson.emit(data);
     }
