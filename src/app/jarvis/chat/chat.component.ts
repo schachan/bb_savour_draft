@@ -138,38 +138,41 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 author: TextAuthor,
                 left: directionLeft || false,
                 heading: heading || false,
-                message: TextMessage,
-                msgType:'Text'
+                value: TextMessage,
             };
             if (containerId == 1) {
+                data["msgType"] = this.msgTypeLeft;
                 if (this.msgTypeLeft == "GIF") {
                     data["gif"] = true;
                     data["imgUrl"] = TextMessage;
-                    data["msgType"] = 'GIF';
                 }
                 if (this.msgTypeLeft == "Image") {
+                    data["gif"] = false;
                     data["imgUrl"] = TextMessage;
-                    data["msgType"] = 'Image';
                 }
                 if (this.msgTypeLeft == "Video") {
                     data["videoId"] = TextMessage;
-                    data["msgType"] = 'Video';
+                }
+                if (this.msgTypeLeft == "Text") {
+                    data["message"] = TextMessage;
                 }
             }
 
             if (containerId == 3) {
+                data["msgType"] = this.msgTypeRight;
                 if (this.msgTypeRight == "GIF") {
                     data["gif"] = true;
                     data["imgUrl"] = TextMessage;
-                    data["msgType"] = 'GIF';
                 }
                 if (this.msgTypeRight == "Image") {
+                    data["gif"] = false;
                     data["imgUrl"] = TextMessage;
-                    data["msgType"] = 'Image';
                 }
                 if (this.msgTypeRight == "Video") {
                     data["videoId"] = TextMessage;
-                    data["msgType"] = 'Video';
+                }
+                if (this.msgTypeLeft == "Text") {
+                    data["message"] = TextMessage;
                 }
             }
 
@@ -226,21 +229,21 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 if (element["heading"]) {
                     this.isHeading = true;
                     this.editheading = true;
-                    this.editTextMessage = element["message"];
+                    this.editTextMessage = element["value"];
                 } else {
                     if (element["left"]) {
                         this.isHeading = false;
                         this.isLeftDirection = true;
                         this.editleft = true;
                         this.editAuthor = element["author"];
-                        this.editTextMessage = element["message"];
+                        this.editTextMessage = element["value"];
                     }
                     else {
                         this.isHeading = false;
                         this.isLeftDirection = false;
                         this.editleft = false;
                         this.editAuthor = element["author"];
-                        this.editTextMessage = element["message"];
+                        this.editTextMessage = element["value"];
                         this.msgTypeEdit = "Text"
                         if (element["videoId"]) {
                             this.msgTypeEdit = "Video";
@@ -278,80 +281,73 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.bookContent.forEach((element, index) => {
             if (element["messageNumber"] == messageId) {
                 if (!this.isNewMsg) {
+                    var msgNo = element["messageNumber"];
+                    element = {
+                        messageNumber: msgNo
+                    };
+
                     if (this.isHeading) {
                         element["heading"] = true;
                         element["left"] = false;
                         element["author"] = "";
-                        element["message"] = this.editTextMessage;
+                        element["value"] = this.editTextMessage;
                     } else {
                         if (this.isLeftDirection) {
                             element["heading"] = false;
                             element["left"] = true;
                             element["author"] = this.editAuthor;
-                            element["message"] = this.editTextMessage;
+                            element["value"] = this.editTextMessage;
                         }
                         else {
                             element["heading"] = false;
                             element["left"] = false;
                             element["author"] = this.editAuthor;
-                            element["message"] = this.editTextMessage;
+                            element["value"] = this.editTextMessage;
                         }
                     }
+                    element["msgType"] = this.msgTypeEdit;
                     if (this.msgTypeEdit == "GIF") {
                         element["gif"] = true;
                         element["imgUrl"] = this.editTextMessage;
-                        element["videoId"] = '';
-                        element["msgType"] = 'GIF';
                     }
                     if (this.msgTypeEdit == "Image") {
                         element["imgUrl"] = this.editTextMessage;
-                        element["videoId"] = '';
                         element["gif"] = false;
-                        element["msgType"] = 'Image';
                     }
                     if (this.msgTypeEdit == "Video") {
                         element["videoId"] = this.editTextMessage;
-                        element["imgUrl"] = '';
-                        element["msgType"] = 'Video';
+                        element["gif"] = false;
                     }
                     if (this.msgTypeEdit == "Text") {
-                        element["videoId"] = '';
-                        element["imgUrl"] = '';
                         element["gif"] = false;
-                        element["msgType"] = 'Text';
+                        element["message"] = this.editTextMessage;
                     }
+                    this.bookContent[index] = element;
 
                 } else {
                     var content = {
                         messageNumber: index != 0 ? ((this.bookContent[index - 1]["messageNumber"] + messageId) / 2) : (messageId / 2),
                         author: this.editAuthor,
-                        message: this.editTextMessage,
+                        value: this.editTextMessage,
                         left: this.isLeftDirection,
-                        heading: this.isHeading
+                        heading: this.isHeading,
+                        msgType: this.msgTypeEdit
                     };
                     if (this.msgTypeEdit == "GIF") {
                         content["gif"] = true;
                         content["imgUrl"] = this.editTextMessage;
-                        content["videoId"] = '';
-                        content["msgType"] = 'GIF';
                     }
                     if (this.msgTypeEdit == "Image") {
                         content["imgUrl"] = this.editTextMessage;
-                        content["videoId"] = '';
                         content["gif"] = false;
-                        content["msgType"] = 'Image';
                     }
                     if (this.msgTypeEdit == "Video") {
                         content["videoId"] = this.editTextMessage;
-                        content["imgUrl"] = '';
                         content["gif"] = false;
-                        content["msgType"] = 'Video';
                     }
                     if (this.msgTypeEdit == "Text") {
-                        content["videoId"] = '';
-                        content["imgUrl"] = '';
                         content["gif"] = false;
-                        content["msgType"] = 'Text';
+                        content["message"] = this.editTextMessage;
                     }
                     updatedData.splice(index, 0, content);
                 }
@@ -365,15 +361,44 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 var content = {
                     messageNumber: element["messageNumber"],
                     author: element["author"],
-                    message: element["message"],
                     left: element["left"],
                     heading: element["heading"],
-                    gif: element["gif"] || false,
-                    imgUrl: element["imgUrl"] || '',
-                    videoId: element["videoId"] || '',
                     msgType: element["msgType"]
                 };
+
+                if (element.msgType == "GIF") {
+                    content["gif"] = true;
+                    content["imgUrl"] = element["imgUrl"];
+                    content["value"] = element["imgUrl"];
+                }
+                if (element.msgType == "Image") {
+                    content["imgUrl"] = element["imgUrl"];
+                    content["value"] = element["imgUrl"];
+                    content["gif"] = false;
+                }
+                if (element.msgType == "Video") {
+                    content["videoId"] = element["videoId"];
+                    content["value"] = element["videoId"];
+                }
+                if (element.msgType == "Text") {
+                    content["message"] = element["value"];
+                    content["value"] = element["value"];
+                }
                 this.addToMessagesList(content);
+            });
+        } else {
+            this.container.clear();
+            this.bookContent.forEach((element, index) => {
+                let componentFactory = this.resolver.resolveComponentFactory(MessageComponent);
+                this.dynamicComponentRef = this.container.createComponent(componentFactory);
+                this.dynamicComponentRef.instance.message = element;
+                this.dynamicComponentRef.instance.deleteMessageFromJson.subscribe((value: any) => {
+                    this.deleteMessages(value);
+                });
+                this.dynamicComponentRef.instance.editMessageFromJson.subscribe((value: any) => {
+                    this.editMessage(value.messageNumber, value.isNewMsg);
+                });
+                this.dynamicComponentRef.instance._ref = this.dynamicComponentRef;
             });
         }
         this.countBookContent();
@@ -409,10 +434,28 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                         var content = {
                             messageNumber: index,
                             author: element.author,
-                            message: element.message,
                             left: element.left,
-                            heading: element.heading
+                            heading: element.heading,
+                            msgType: element.msgType
                         };
+                        if (element.msgType == "GIF") {
+                            content["gif"] = true;
+                            content["imgUrl"] = element.imgUrl;
+                            content["value"] = element.imgUrl;
+                        }
+                        if (element.msgType == "Image") {
+                            content["imgUrl"] = element.imgUrl;
+                            content["value"] = element.imgUrl;
+                            content["gif"] = false;
+                        }
+                        if (element.msgType == "Video") {
+                            content["videoId"] = element.videoId;
+                            content["value"] = element.videoId;
+                        }
+                        if (element.msgType == "Text") {
+                            content["message"] = element.message;
+                            content["value"] = element.message;
+                        }
                         this.addToMessagesList(content);
                     });
                     var msg = "Your chat story has been opened successfuly.";
@@ -452,10 +495,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         var words = 0;
         this.bookContent.forEach((element, index) => {
             if ("message" in element) {
-               words += element["message"].split(' ').length;
+                words += element["message"].split(' ').length;
             }
         });
         this.wordCount = words;
     }
-
 }
