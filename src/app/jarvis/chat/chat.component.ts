@@ -365,6 +365,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     heading: element["heading"],
                     msgType: element["msgType"]
                 };
+                if(element["heading"]){
+                    content["value"] = element["value"];
+                }
 
                 if (element.msgType == "GIF") {
                     content["gif"] = true;
