@@ -365,7 +365,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     heading: element["heading"],
                     msgType: element["msgType"]
                 };
-                if(element["heading"]){
+                if (element["heading"]) {
                     content["value"] = element["value"];
                 }
 
@@ -434,9 +434,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.bookWriter = res["data"].submitted_by;
                     var data = res["data"].summary.content;
                     data.forEach((element, index) => {
-                        var type =element.msgType || 'Text';
+                        debugger;
+                        var type = element.msgType || 'Text';
                         var content = {
-                            messageNumber: index,
+                            messageNumber: element.messageNumber || (index + 1),
                             author: element.author,
                             left: element.left,
                             heading: element.heading,
