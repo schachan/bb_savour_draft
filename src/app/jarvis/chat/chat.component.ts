@@ -434,28 +434,29 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.bookWriter = res["data"].submitted_by;
                     var data = res["data"].summary.content;
                     data.forEach((element, index) => {
+                        var type =element.msgType || 'Text';
                         var content = {
                             messageNumber: index,
                             author: element.author,
                             left: element.left,
                             heading: element.heading,
-                            msgType: element.msgType
+                            msgType: type
                         };
-                        if (element.msgType == "GIF") {
+                        if (type == "GIF") {
                             content["gif"] = true;
                             content["imgUrl"] = element.imgUrl;
                             content["value"] = element.imgUrl;
                         }
-                        if (element.msgType == "Image") {
+                        if (type == "Image") {
                             content["imgUrl"] = element.imgUrl;
                             content["value"] = element.imgUrl;
                             content["gif"] = false;
                         }
-                        if (element.msgType == "Video") {
+                        if (type == "Video") {
                             content["videoId"] = element.videoId;
                             content["value"] = element.videoId;
                         }
-                        if (element.msgType == "Text") {
+                        if (type == "Text") {
                             content["message"] = element.message;
                             content["value"] = element.message;
                         }
