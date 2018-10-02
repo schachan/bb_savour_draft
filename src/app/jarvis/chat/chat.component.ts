@@ -434,7 +434,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.bookWriter = res["data"].submitted_by;
                     var data = res["data"].summary.content;
                     data.forEach((element, index) => {
-                        debugger;
                         var type = element.msgType || 'Text';
                         var content = {
                             messageNumber: element.messageNumber || (index + 1),
