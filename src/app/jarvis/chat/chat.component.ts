@@ -158,6 +158,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 }
             }
 
+            if (containerId == 2) {
+                data["msgType"] = "Text";
+                data["message"] = TextMessage;
+            }
+
             if (containerId == 3) {
                 data["msgType"] = this.msgTypeRight;
                 if (this.msgTypeRight == "GIF") {
@@ -230,6 +235,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.isHeading = true;
                     this.editheading = true;
                     this.editTextMessage = element["value"];
+                    this.msgTypeEdit = "Text";
                 } else {
                     if (element["left"]) {
                         this.isHeading = false;
@@ -367,6 +373,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 };
                 if (element["heading"]) {
                     content["value"] = element["value"];
+                    content["message"] = element["value"];
                 }
 
                 if (element.msgType == "GIF") {
@@ -408,6 +415,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     open(content) {
+        this.responseMessage = "";
+        this.openResponseMessage = "";
         this.modalService.open(content).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
@@ -426,6 +435,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     getBookDetail() {
+        this.openResponseMessage = "";
         this.baseService.get(this.bookId).subscribe(
             res => {
                 if (res["success"]) {
@@ -457,8 +467,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                             content["value"] = element.videoId;
                         }
                         if (type == "Text") {
-                            content["message"] = element.message;
-                            content["value"] = element.message;
+                            content["message"] = element.message || "";
+                            content["value"] = element.message || "";
                         }
                         this.addToMessagesList(content);
                     });
@@ -486,7 +496,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                     this.bookId = res["data"];
                     var msg = "Your chat story is saved successfuly.You can use the below book id for editing and future references. \nBook Id =" + res["data"];
                     this.responseMessage = msg;
-                    this.wordCount = 0;
+                    // this.wordCount = 0;
                 }
             },
             err => {
