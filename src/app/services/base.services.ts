@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Request, RequestOptions, Response, XHRBackend } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class BaseService {
 
-   private baseUrl: string = 'https://bookbhook.in/api/savour';
-   constructor(public http: HttpClient) {}
+   private baseUrl:string = `${environment.serverUrl}api/savour`;
+   constructor(public http: HttpClient) {
+      this.http = http;
+   }
 
    get(bookId) {
       return this.http.get(this.baseUrl + '/draft/' + bookId);
    }
 
-   post(postBody: any, bookId) {
-      if (bookId != "") {
-         return this.put(bookId, postBody);
+   post(body:any, bookId:String) {
+      if (bookId !== '') {
+         return this.put(bookId, body);
       } else {
-         return this.http.post(this.baseUrl + "/draft", postBody, {});
+         return this.http.post(this.baseUrl + '/draft', body, {});
       }
    }
 
