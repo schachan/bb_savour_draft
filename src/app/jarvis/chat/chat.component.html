@@ -1,7 +1,10 @@
 <div #chatScroll class="jarvis-container clearfix" [ngStyle]="{'padding-bottom': IsMobile == true ? '480px' : '210px'}">
   <!-- Messages Section -->
   <div class="chat-holder">
-    <div><span style="font-size: 15px;font-weight: 700;float:right;color:black;position: fixed;right:10px !important;z-index: 9999;">Total Words Count : {{wordCount}}</span></div>
+    <div style="padding: 6px;">
+      <span style="font-size: 15px;font-weight: 700;float:left;color:black;position: fixed;left:10px !important;z-index: 9999;">Message Count : {{bookContent.length}}</span>
+      <span style="font-size: 15px;font-weight: 700;float:right;color:black;position: fixed;right:10px !important;z-index: 9999;">Total Words Count : {{wordCount}}</span>
+      </div>
     <div class="chat-message-container">
       <div #container></div>
     </div>
@@ -218,18 +221,24 @@
         <h4 class="modal-title">Instructions</h4>
       </div>
       <div class="modal-body" style="max-height: 400px;overflow: auto;">
-        <h5>Please note the following before you submit a chat story with bookbhook </h5>
+        <h5>Please note the following before you submit an inofchat with bookbhook</h5>
         <ol type="1">
-          <li>If your chat story is being narrated by in first person, please use NAME (right) as 'Me'</li>
-          <li>You can add emojis in the chat story.</li>
+          <li>Before you begin writing, please read a few infochat on <a href="https://infochat.bookbhook.com" target="_blank">https://infochat.bookbhook.com</a>.</li>
+          <li>You can add any names of your choice in the NAME(right) and NAME(left) fields.</li>
+          <li>If your chat story is being narrated by in first person, please use NAME (right) as 'Me'.</li>
+          <li>You can add emojis in the chat story. You can add gif of your choice by selecting gif from the tab, and adding
+            any popular gif url from sites like <a href="https://giphy.com" target="_blank">giphy.com</a>.</li>
           <li>If your chat story requires messages with image, please type the dialogue 'INSERT IMAGE HERE' and submit the dialogue.
-            Editors at bookbhook will reach out to you to decide the image</li>
-          <li>Once you submit a story, you will be given a BOOKID. Please mail this BOOKID as subject heading to <a href="mailto:response@bookbhook.com">response@bookbhook.com</a></li>
+            Editors at bookbhook will reach out to you to decide the image.</li>
+          <li>You can edit dialogues by clicking on the edit icon of the dialogue you want to edit.</li>
+          <li>Once you submit a story, you will be given a BOOKID. Please mail this BOOKID as subject heading to <a href="mailto:response@bookbhook.com">response@bookbhook.com</a>.</li>
+          <li>To save an infochat midway, please submit and note the BOOKID. You can reopen the infochat later by reopening with
+            the BOOKID.</li>
           <li>The responsibility of the content lies with the writer. bookbhook is not in a position to verify source of the
-            chat story</li>
+            chat story.</li>
           <li>By submitting a chat story, you are agreeing to the terms listed on <a href="https://bookbhook.com/terms-and-conditions/"
-              target="_blank">https://bookbhook.com/terms-and-conditions/</a></li>
-          <li>Marcus Aurelius Learning Solutions Pvt Ltd reserves the right to refuse any story without any explanation</li>
+              target="_blank">https://bookbhook.com/terms-and-conditions/</a>.</li>
+          <li>Marcus Aurelius Learning Solutions Pvt Ltd reserves the right to refuse any story without any explanation.</li>
         </ol>
       </div>
       <div class="modal-footer">
