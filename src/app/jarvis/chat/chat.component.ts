@@ -81,7 +81,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     ngAfterViewChecked() {
-        this.scrollToBottom();
+        
     }
 
     scrollToBottom(): void {
@@ -211,6 +211,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 this.messageRight = "";
             }
         }
+        this.scrollToBottom();
     }
 
     addToMessagesList(data: Object) {
@@ -292,6 +293,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             }
         });
         this.countBookContent();
+        this.scrollToBottom();
     }
 
     changeMessage() {
@@ -432,6 +434,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
             });
         }
         this.countBookContent();
+        this.scrollToBottom();
     }
 
     open(content) {
