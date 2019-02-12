@@ -32,8 +32,9 @@
           <div class="col-md-12 typing-area" style="margin-bottom:5px">
             <label>Message <span style="color: red;font-size: 16px;">*</span></label>
             <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
+            <i (click)="toggledmessageLeft = !toggledmessageLeft" class="float-right send-box" [(emojiPickerIf)]="toggledmessageLeft" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionLeft($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
             <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
-              <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+             <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
             </div>
           </div>
         </div>
@@ -41,6 +42,7 @@
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
         <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
+        <i (click)="toggledmessageHeading = !toggledmessageHeading" class="float-right send-box" [(emojiPickerIf)]="toggledmessageHeading" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionHeading($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
@@ -70,6 +72,7 @@
           <div class="col-md-12 typing-area" style="margin-bottom:5px">
             <label>Message <span style="color: red;font-size: 16px;">*</span></label>
             <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
+            <i (click)="toggledmessageRight = !toggledmessageRight" class="float-right send-box" [(emojiPickerIf)]="toggledmessageRight" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionRight($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
             <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
               <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
             </div>
@@ -94,6 +97,7 @@
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
         <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
+          <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
       </div>
@@ -103,6 +107,7 @@
         <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
+          <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
       </div>
@@ -121,6 +126,7 @@
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
         <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
+          <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
       </div>

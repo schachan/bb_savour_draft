@@ -5,6 +5,8 @@ import { BaseService } from './services/base.services';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import  {  NgxEmojiPickerModule  }  from  'ngx-emoji-picker';
+
 
 const routes: Routes = [
   { path: '', loadChildren: './jarvis/jarvis.module#JarvisModule' }
@@ -20,7 +22,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    NgxEmojiPickerModule.forRoot()
   ],
   providers: [BaseService],
   bootstrap: [AppComponent]

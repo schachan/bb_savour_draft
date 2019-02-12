@@ -99,6 +99,7 @@ label {
 }
 .send-box{
     padding-right: 0px !important;
+    padding-left: 0px !important;
     display: INLINE-BLOCK;
     width: auto;
     margin-top: -33px !important;

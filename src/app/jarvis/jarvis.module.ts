@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { ChatComponent } from './chat/chat.component';
 import { RouterModule, Routes } from '@angular/router';
+import  {  NgxEmojiPickerModule  }  from  'ngx-emoji-picker';
 
 const routes: Routes = [
 	{ path: '', component: ChatComponent }
@@ -14,7 +15,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+     NgxEmojiPickerModule
   ],
   declarations: [MessageComponent, ChatComponent],
   entryComponents: [MessageComponent],

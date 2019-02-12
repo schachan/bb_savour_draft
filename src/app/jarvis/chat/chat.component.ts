@@ -19,9 +19,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     @ViewChild('chatScroll') private myScrollContainer: ElementRef;
     private dynamicComponentRef: ComponentRef<MessageComponent>;
 
-    public messageLeft: string;
-    public messageHeading: string;
-    public messageRight: string;
+    public messageLeft: string = "";
+    public messageHeading: string = "";
+    public messageRight: string = "";
     public author: string;
     public authorLeft: string;
     public authorRight: string;
@@ -53,6 +53,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public msgTypeEdit: string;
     public modalHeader: string = "Update Message";
     public btnText: string = "Update";
+    toggledmessageHeading: boolean = false;
+    toggledmessageRight: boolean = false;
+    toggledmessageLeft: boolean = false;
+    noScroll : boolean =false;
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
         // User screen size
@@ -82,12 +86,26 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     scrollToBottom(): void {
         try {
+            if(!this.noScroll){
             this.myScrollContainer.nativeElement.scrollIntoView(false);
+            }
         } catch (err) { }
     }
 
     openModal() {
         this.display = 'block';
+    }
+
+    handleSelectionHeading(event) {
+        this.messageHeading += event.char;
+    }
+
+    handleSelectionRight(event) {
+        this.messageRight += event.char;
+    }
+
+    handleSelectionLeft(event) {
+        this.messageLeft += event.char;
     }
 
     openEditModal() {
@@ -106,6 +124,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
 
     sendMessage(containerId) {
+        this.noScroll = false;
         var TextMessage = '';
         var TextAuthor = '';
         var directionLeft = false;
@@ -198,15 +217,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         let componentFactory = this.resolver.resolveComponentFactory(MessageComponent);
         this.dynamicComponentRef = this.container.createComponent(componentFactory);
         this.dynamicComponentRef.instance.message = data;
+        this.dynamicComponentRef.instance._ref = this.dynamicComponentRef;
+        this.bookContent.push(data);
+        this.countBookContent();
         this.dynamicComponentRef.instance.deleteMessageFromJson.subscribe((value: any) => {
             this.deleteMessages(value);
         });
         this.dynamicComponentRef.instance.editMessageFromJson.subscribe((value: any) => {
             this.editMessage(value.messageNumber, value.isNewMsg);
         });
-        this.dynamicComponentRef.instance._ref = this.dynamicComponentRef;
-        this.bookContent.push(data);
-        this.countBookContent();
     }
 
     deleteMessages(messageNumber: number) {
@@ -219,6 +238,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     editMessage(messageNumber: number, isNewMsg: boolean) {
+        this.noScroll = true;
         this.isNewMsg = isNewMsg;
         if (isNewMsg) {
             this.modalHeader = "Insert New Message";
