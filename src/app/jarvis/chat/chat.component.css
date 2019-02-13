@@ -111,3 +111,22 @@ label {
         padding: 4px 10px !important;
 }
 [hidden] { display: none !important;}
+
+.smile-left{
+    position: absolute;
+    top: 28px;
+    left: 18px;
+    color: black;
+    font-style: normal;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.smile{
+    position: absolute;
+    left: 18px;
+    color: black;
+    font-style: normal;
+    font-size: 20px;
+    cursor: pointer;
+}
