@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrl: 'https://bookbhook.in/'
+  serverUrl: 'http://localhost:1337/'
 };

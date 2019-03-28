@@ -4,7 +4,7 @@
     <div style="padding: 0px;">
       <span style="font-size: 15px;font-weight: 700;float:left;color:black;position: fixed;left:10px !important;z-index: 9999;background:white;padding: 5px;">Message Count : {{bookContent.length}}</span>
       <span style="font-size: 15px;font-weight: 700;float:right;color:black;position: fixed;right:10px !important;z-index: 9999;background:white;padding: 5px;">Total Words Count : {{wordCount}}</span>
-      </div>
+    </div>
     <div class="chat-message-container">
       <div #container></div>
     </div>
@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-md-4 typing-area" style="margin-bottom:5px">
             <label>Type <span style="color: red;font-size: 16px;">*</span></label>
-            <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" style="height: 32px;padding: 0px 0px 4px 6px;">
+            <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" (change)="changeControls(true)" style="height: 32px;padding: 0px 0px 4px 6px;">
               <option value="Text" [selected]="msgTypeLeft == 'Text'">Text</option>
               <option value="Image" [selected]="msgTypeLeft == 'Image'">Image</option>
               <option value="GIF" [selected]="msgTypeLeft == 'GIF'">GIF</option>
@@ -31,10 +31,12 @@
         <div class="row" style="margin-top: 27px;">
           <div class="col-md-12 typing-area" style="margin-bottom:5px">
             <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-            <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
-            <i (click)="toggledmessageLeft = !toggledmessageLeft" class="float-left send-box" [(emojiPickerIf)]="toggledmessageLeft" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionLeft($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
-            <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
-             <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
+            <input [hidden]="leftHidden" (change)="changeListener($event,1)" type="file" name="typing-box" class="typing-box" [autofocus]="messageLeft" style="padding:1px 80px 0px 7px">
+            <input [hidden]="!leftHidden" type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
+            <i [hidden]="!leftHidden" (click)="toggledmessageLeft = !toggledmessageLeft" class="float-left send-box" [(emojiPickerIf)]="toggledmessageLeft"
+              [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionLeft($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;">😄</i>
+            <div [hidden]="!leftHidden" class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
+              <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
             </div>
           </div>
         </div>
@@ -42,7 +44,8 @@
       <div class="col-md-4 typing-area" style="margin-bottom:5px">
         <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
-        <i (click)="toggledmessageHeading = !toggledmessageHeading" class="float-left send-box" [(emojiPickerIf)]="toggledmessageHeading" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionHeading($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
+        <i (click)="toggledmessageHeading = !toggledmessageHeading" class="float-left send-box" [(emojiPickerIf)]="toggledmessageHeading"
+          [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionHeading($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;">😄</i>
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
@@ -56,7 +59,7 @@
         <div class="row">
           <div class="col-md-4 typing-area" style="margin-bottom:5px">
             <label>Type <span style="color: red;font-size: 16px;">*</span></label>
-            <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;">
+            <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;" (change)="changeControls(false)">
               <option value="Text" [selected]="msgTypeRight == 'Text'">Text</option>
               <option value="Image" [selected]="msgTypeRight == 'Image'">Image</option>
               <option value="GIF" [selected]="msgTypeRight == 'GIF'">GIF</option>
@@ -71,9 +74,11 @@
         <div class="row" style="margin-top: 27px;">
           <div class="col-md-12 typing-area" style="margin-bottom:5px">
             <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-            <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
-            <i (click)="toggledmessageRight = !toggledmessageRight" class="float-left send-box" [(emojiPickerIf)]="toggledmessageRight" [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionRight($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;" >😄</i> 
-            <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
+            <input [hidden]="rightHidden" (change)="changeListener($event,3)" type="file" name="typing-box" class="typing-box" [autofocus]="messageRight" style="padding:1px 80px 0px 7px">
+            <input type="text" [hidden]="!rightHidden" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
+            <i  [hidden]="!rightHidden" (click)="toggledmessageRight = !toggledmessageRight" class="float-left send-box" [(emojiPickerIf)]="toggledmessageRight"
+              [emojiPickerDirection]="'top'" (emojiPickerSelect)="handleSelectionRight($event)" style="color: black;font-style: normal;font-size: 21px;cursor: pointer;    margin-right: 76px !important; position: sticky;">😄</i>
+            <div  [hidden]="!rightHidden" class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
               <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
             </div>
           </div>
@@ -86,7 +91,7 @@
     <div class="row" style="height: 180px;">
       <div class="col-md-12 typing-area">
         <label>Type <span style="color: red;font-size: 16px;">*</span></label>
-        <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" style="height: 32px;padding: 0px 0px 4px 6px;">
+        <select class="form-control typing-box" [(ngModel)]="msgTypeLeft" style="height: 32px;padding: 0px 0px 4px 6px;"  (change)="changeControls(true)">
               <option value="Text" [selected]="msgTypeLeft == 'Text'">Text</option>
               <option value="Image" [selected]="msgTypeLeft == 'Image'">Image</option>
               <option value="GIF" [selected]="msgTypeLeft == 'GIF'">GIF</option>
@@ -95,9 +100,11 @@
         <label>Name (left) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorLeft" class="typing-box" style="padding: 0px 80px 0 10px;">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
-        <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" class="float-left smile" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
-        <div class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
+        <input [hidden]="leftHidden" (change)="changeListener($event,1)" type="file" name="typing-box" class="typing-box" [autofocus]="messageLeft" style="padding:1px 80px 0px 7px">
+        <input [hidden]="!leftHidden" type="text" [(ngModel)]="messageLeft" name="typing-box" (keyup.enter)="sendMessage(1)" class="typing-box" [autofocus]="messageLeft">
+        <i [hidden]="!leftHidden" (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" class="float-left smile" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+          (emojiPickerSelect)="handleSelection($event)">😄</i>
+        <div [hidden]="!leftHidden" class="col-12 float-right send-box" (click)="sendMessage(1)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
       </div>
@@ -106,7 +113,8 @@
       <div class="col-md-12 typing-area">
         <label>Descriptor (after 2 hours, one day later etc) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="messageHeading" name="typing-box" (keyup.enter)="sendMessage(2)" class="typing-box" [autofocus]="messageHeading">
-        <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" class="float-left smile-left" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
+        <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" class="float-left smile-left" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+          (emojiPickerSelect)="handleSelection($event)">😄</i>
         <div class="col-12 float-right send-box" (click)="sendMessage(2)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
@@ -115,7 +123,7 @@
     <div class="row" style="height: 180px;">
       <div class="col-md-12 typing-area">
         <label>Type <span style="color: red;font-size: 16px;">*</span></label>
-        <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;">
+        <select class="form-control typing-box" [(ngModel)]="msgTypeRight" style="height: 32px;padding :0px 0px 4px 6px;"  (change)="changeControls(false)">
               <option value="Text" [selected]="msgTypeRight == 'Text'">Text</option>
               <option value="Image" [selected]="msgTypeRight == 'Image'">Image</option>
               <option value="GIF" [selected]="msgTypeRight == 'GIF'">GIF</option>
@@ -124,9 +132,11 @@
         <label>Name (right) <span style="color: red;font-size: 16px;">*</span></label>
         <input type="text" [(ngModel)]="authorRight" class="typing-box" style="padding: 0px 80px 0 10px;">
         <label>Message <span style="color: red;font-size: 16px;">*</span></label>
-        <input type="text" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
-        <i (click)="toggled = !toggled" [(emojiPickerIf)]="toggled" class="float-left smile" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'" (emojiPickerSelect)="handleSelection($event)">😄</i> 
-        <div class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
+        <input [hidden]="rightHidden" (change)="changeListener($event,3)" type="file" name="typing-box" class="typing-box" [autofocus]="messageRight" style="padding:1px 80px 0px 7px">
+        <input type="text" [hidden]="!rightHidden" [(ngModel)]="messageRight" name="typing-box" (keyup.enter)="sendMessage(3)" class="typing-box" [autofocus]="messageRight">
+        <i (click)="toggled = !toggled" [hidden]="!rightHidden" [(emojiPickerIf)]="toggled" class="float-left smile" [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+          (emojiPickerSelect)="handleSelection($event)">😄</i>
+        <div [hidden]="!rightHidden" class="col-12 float-right send-box" (click)="sendMessage(3)" style="margin-top: 3px">
           <span class="btn-send btn btn-success"><i class="fa fa-paper-plane"></i> Send</span>
         </div>
       </div>
@@ -232,13 +242,18 @@
           <li>Before you begin writing, please read a few infochat on <a href="https://infochat.bookbhook.com" target="_blank">https://infochat.bookbhook.com</a>.</li>
           <li>You can add any names of your choice in the NAME(right) and NAME(left) fields.</li>
           <li>If your chat story is being narrated by in first person, please use NAME (right) as 'Me'.</li>
-          <li>You can add emojis in the chat story. You can add gif of your choice by selecting gif from the tab, and adding any popular gif url from sites like <a href="https://giphy.com" target="_blank">giphy.com</a>.</li>
-          <li>If your chat story requires messages with image, please type the dialogue 'INSERT IMAGE HERE' and submit the dialogue. Editors at bookbhook will reach out to you to decide the image.</li>
-          <li>Do NOT use any double quotation marks in your infochat. If you need to use quotation marks, use single quote ' to open and close the quote.</li>
+          <li>You can add emojis in the chat story. You can add gif of your choice by selecting gif from the tab, and adding
+            any popular gif url from sites like <a href="https://giphy.com" target="_blank">giphy.com</a>.</li>
+          <li>If your chat story requires messages with image, please type the dialogue 'INSERT IMAGE HERE' and submit the dialogue.
+            Editors at bookbhook will reach out to you to decide the image.</li>
+          <li>Do NOT use any double quotation marks in your infochat. If you need to use quotation marks, use single quote '
+            to open and close the quote.</li>
           <li>You can edit dialogues by clicking on the edit icon of the dialogue you want to edit</li>
           <li>Once you submit a story, you will be given a BOOKID. Please mail this BOOKID as subject heading to <a href="mailto:response@bookbhook.com">response@bookbhook.com</a>.</li>
-          <li>To save an infochat midway, please submit and note the BOOKID. You can reopen the infochat later by reopening with the BOOKID.</li>
-          <li>The responsibility of the content lies with the writer. bookbhook is not in a position to verify source of the chat story.</li>
+          <li>To save an infochat midway, please submit and note the BOOKID. You can reopen the infochat later by reopening with
+            the BOOKID.</li>
+          <li>The responsibility of the content lies with the writer. bookbhook is not in a position to verify source of the
+            chat story.</li>
           <li>By submitting a chat story, you are agreeing to the terms listed on <a href="https://bookbhook.com/terms-and-conditions/"
               target="_blank">https://bookbhook.com/terms-and-conditions/</a>.</li>
           <li>Marcus Aurelius Learning Solutions Pvt Ltd reserves the right to refuse any story without any explanation.</li>

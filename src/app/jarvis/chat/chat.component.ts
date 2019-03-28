@@ -56,7 +56,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     toggledmessageHeading: boolean = false;
     toggledmessageRight: boolean = false;
     toggledmessageLeft: boolean = false;
-    noScroll : boolean =false;
+    noScroll: boolean = false;
+    public leftHidden: boolean = true;
+    public rightHidden: boolean = true;
 
     constructor(private router: Router, private route: ActivatedRoute, private resolver: ComponentFactoryResolver, private modalService: NgbModal, private baseService: BaseService) {
         // User screen size
@@ -81,13 +83,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     ngAfterViewChecked() {
-        
+
     }
 
     scrollToBottom(): void {
         try {
-            if(!this.noScroll){
-            this.myScrollContainer.nativeElement.scrollIntoView(false);
+            if (!this.noScroll) {
+                this.myScrollContainer.nativeElement.scrollIntoView(false);
             }
         } catch (err) { }
     }
@@ -537,4 +539,56 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         });
         this.wordCount = words;
     }
+
+    uploadImage(base64Data, modalName: any) {
+        var jsonData: Object = {
+            "base64": base64Data,
+        };
+        this.baseService.uploadImage(jsonData).subscribe(
+            res => {
+                if (res["success"]) {
+                    if (modalName == 1) {
+                        this.messageLeft = res['message'].Location;
+                    } else {
+                        this.messageRight = res['message'].Location;
+                    }
+                    this.sendMessage(modalName);
+                }
+            },
+            err => {
+                console.log(err);
+            }
+        );
+    }
+
+    changeListener($event, modalName: any): void {
+        this.readThis($event.target, modalName);
+    }
+
+    readThis(inputValue: any, modalName: any): void {
+        var file: File = inputValue.files[0];
+        var myReader: FileReader = new FileReader();
+
+        myReader.onloadend = (e) => {
+            this.uploadImage(myReader.result, modalName);
+        }
+        myReader.readAsDataURL(file);
+    }
+
+    changeControls(isLeftSide: boolean) {
+        if (isLeftSide) {
+            if (this.msgTypeLeft == 'Text' || this.msgTypeLeft == 'Video') {
+                this.leftHidden = true;
+            } else {
+                this.leftHidden = false;
+            }
+        } else {
+            if (this.msgTypeRight == 'Text' || this.msgTypeRight == 'Video') {
+                this.rightHidden = true;
+            } else {
+                this.rightHidden = false;
+            }
+        }
+    }
+
 }

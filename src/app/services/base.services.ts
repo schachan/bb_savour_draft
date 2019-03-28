@@ -33,4 +33,8 @@ export class BaseService {
       const url = this.baseUrl + "/draft/" + bookId;
       return this.http.put(url, putData);
    }
+
+   uploadImage(imageData) {
+      return  this.http.post(this.baseUrl + '/uploadImage', imageData);;
+   }
 }
